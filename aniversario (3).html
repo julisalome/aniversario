@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julián & Renata · Un año</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="images.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark: #1a0a0a;
+  --rose: #e8a0b0;
+  --rose-mid: #c97a8a;
+  --rose-light: #e8b4be;
+  --body: #fff8f9;
+  --ext: #f5eeee;
+  --border: #f0d8dc;
+  --text-muted: #b09098;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ext);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ── PETAL DECO ── */
+.petal {
+  position: absolute;
+  border-radius: 50% 0 50% 0;
+  opacity: 0.10;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.p-h1 { width: 200px; height: 200px; background: var(--rose); top: -60px; left: -60px; transform: rotate(30deg); }
+.p-h2 { width: 150px; height: 150px; background: var(--rose-mid); top: 40px; right: -40px; transform: rotate(-45deg); }
+.p-h3 { width: 300px; height: 300px; background: var(--rose); bottom: -100px; right: -80px; transform: rotate(15deg); }
+.p-h4 { width: 120px; height: 120px; background: var(--rose-mid); bottom: 60px; left: -30px; transform: rotate(60deg); }
+.p-h5 { width: 80px; height: 80px; background: var(--rose-light); top: 45%; left: 10%; transform: rotate(-20deg); }
+
+.hero-eyebrow {
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 1.5rem;
+}
+
+.hero-names {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--rose-light);
+  margin-bottom: 0.8rem;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(52px, 10vw, 90px);
+  line-height: 1.0;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.hero-title span { color: var(--rose); }
+
+.hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--rose-mid);
+  margin-bottom: 3rem;
+}
+
+.hero-date {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rose-light);
+  border: 0.5px solid var(--rose-mid);
+  padding: 7px 24px 6px;
+  border-radius: 20px;
+  margin-bottom: 3rem;
+}
+
+.hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: bounce 2s infinite;
+}
+
+.hero-scroll span {
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+}
+
+.hero-scroll svg { color: var(--rose-mid); }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ════════════════════════════════
+   SECTION HEADERS
+════════════════════════════════ */
+.section-header {
+  background: var(--dark);
+  text-align: center;
+  padding: 3rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-header .petal { opacity: 0.08; }
+
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(30px, 5vw, 44px);
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.section-title em { color: var(--rose); font-style: italic; }
+
+/* ════════════════════════════════
+   TIMELINE
+════════════════════════════════ */
+#timeline {
+  background: var(--body);
+}
+
+.timeline-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border) 5%, var(--border) 95%, transparent);
+  transform: translateX(-50%);
+}
+
+.tl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.tl-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tl-item:nth-child(odd) { flex-direction: row; }
+.tl-item:nth-child(even) { flex-direction: row-reverse; }
+
+.tl-content {
+  flex: 1;
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(26,10,10,0.06);
+}
+
+.tl-photo {
+  width: 100%;
+  display: block;
+}
+
+.tl-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.tl-photo-placeholder .petal { opacity: 0.12; }
+
+.placeholder-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(232,160,176,0.15);
+  border: 1px solid var(--rose-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-icon svg { color: var(--rose); }
+
+.placeholder-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--rose-light);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.placeholder-sub {
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+}
+
+/* Hidden file input for selfie */
+.photo-upload-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tl-text {
+  padding: 1.2rem 1.4rem;
+}
+
+.tl-date {
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.tl-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--dark);
+  margin-bottom: 5px;
+}
+
+.tl-desc {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #8a5560;
+  line-height: 1.5;
+}
+
+.tl-dot {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--dark);
+  border: 3px solid var(--rose);
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile timeline */
+@media (max-width: 600px) {
+  .timeline-line { display: none; }
+  .tl-item, .tl-item:nth-child(even) { flex-direction: column; }
+  .tl-dot { display: none; }
+}
+
+/* ════════════════════════════════
+   QUIZ
+════════════════════════════════ */
+#quiz {
+  background: var(--ext);
+}
+
+.quiz-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.quiz-progress-bar {
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--rose);
+  transition: width 0.5s ease;
+  border-radius: 1px;
+}
+
+.quiz-card {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 2px 30px rgba(26,10,10,0.06);
+}
+
+.quiz-counter {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.quiz-question {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--dark);
+  margin-bottom: 2rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--body);
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--dark);
+  text-align: left;
+  width: 100%;
+}
+
+.quiz-opt:hover { border-color: var(--rose-mid); background: #fff0f3; }
+
+.quiz-opt.correct { background: #f0faf5; border-color: #6cbf8e; color: #2d6b48; }
+.quiz-opt.wrong { background: #fdf3f4; border-color: #d98090; color: #8b3040; }
+
+.opt-letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.quiz-feedback {
+  margin-top: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  min-height: 24px;
+  color: #6cbf8e;
+  text-align: center;
+}
+
+.quiz-feedback.wrong { color: #d98090; }
+
+.quiz-next {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--dark);
+  color: var(--rose-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: none;
+  transition: opacity 0.2s;
+}
+
+.quiz-next:hover { opacity: 0.85; }
+
+/* ════════════════════════════════
+   RESULTADO QUIZ
+════════════════════════════════ */
+#resultado {
+  display: none;
+  background: var(--ext);
+  padding: 0 1.5rem 4rem;
+}
+
+.resultado-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--dark);
+  border-radius: 2px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.resultado-card .petal { opacity: 0.08; }
+
+.resultado-score {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 80px;
+  color: var(--rose);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.resultado-label {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.resultado-msg {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.resultado-cta {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rose-light);
+  border: 0.5px solid var(--rose-mid);
+  padding: 9px 28px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: none;
+  transition: background 0.2s;
+}
+
+.resultado-cta:hover { background: rgba(232,160,176,0.1); }
+
+/* ════════════════════════════════
+   PISTA FINAL
+════════════════════════════════ */
+#pista {
+  display: none;
+  background: var(--body);
+}
+
+.pista-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.pista-sobre {
+  width: 120px;
+  height: 90px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.sobre-body {
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+}
+
+.sobre-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 50px solid var(--rose-mid);
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+  z-index: 2;
+}
+
+.pista-sobre.open .sobre-flap {
+  transform: rotateX(180deg);
+}
+
+.sobre-corazon {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--rose);
+  font-size: 28px;
+  z-index: 1;
+}
+
+.pista-eyebrow {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.pista-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
+.pista-riddle {
+  display: none;
+  background: var(--dark);
+  border-radius: 2px;
+  padding: 2rem 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pista-riddle .petal { opacity: 0.08; }
+
+.pista-riddle-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: #fff;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.pista-riddle-text em { color: var(--rose); }
+
+.pista-tap {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer {
+  background: var(--dark);
+  text-align: center;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+footer .petal { opacity: 0.06; }
+
+.footer-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--rose-light);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-hearts {
+  color: var(--rose-mid);
+  font-size: 12px;
+  letter-spacing: 6px;
+  margin-top: 0.8rem;
+  display: block;
+}
+
+
+/* ── PISTA STEPS ── */
+.pista-step {
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pista-num {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.pista-num em {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--rose);
+}
+
+.code-block {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem 1.5rem;
+  margin-top: 1.2rem;
+}
+
+.code-question {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.code-question span {
+  font-size: 11px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 3px;
+  letter-spacing: 0.05em;
+}
+
+.code-input-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.code-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--dark);
+  background: var(--body);
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.code-input:focus { border-color: var(--rose-mid); }
+
+.code-btn {
+  width: 48px;
+  height: 48px;
+  background: var(--dark);
+  color: var(--rose);
+  border: none;
+  border-radius: 2px;
+  font-size: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.code-btn:hover { opacity: 0.8; }
+
+.code-error {
+  font-size: 12px;
+  color: #d98090;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  margin-top: 0.6rem;
+  min-height: 18px;
+}
+
+.pista-final {
+  border: 1px solid var(--rose-mid);
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="petal p-h1"></div>
+  <div class="petal p-h2"></div>
+  <div class="petal p-h3"></div>
+  <div class="petal p-h4"></div>
+  <div class="petal p-h5"></div>
+  <p class="hero-eyebrow">07 · 05 · 2026 · primer aniversario</p>
+  <p class="hero-names">Julián & Renata</p>
+  <h1 class="hero-title">Un <span>año</span><br>juntos</h1>
+  <p class="hero-sub">365 días que valieron todo</p>
+  <span class="hero-date">7 de mayo · 2026</span>
+  <div class="hero-scroll">
+    <span>nuestra historia</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ══ TIMELINE HEADER ══ -->
+<div class="section-header">
+  <div class="petal" style="width:120px;height:120px;background:var(--rose);top:-40px;left:-30px;transform:rotate(25deg)"></div>
+  <div class="petal" style="width:80px;height:80px;background:var(--rose-mid);bottom:-20px;right:20px;transform:rotate(-30deg)"></div>
+  <span class="section-eyebrow">capítulo uno</span>
+  <h2 class="section-title">Nuestro <em>año</em></h2>
+</div>
+
+<!-- ══ TIMELINE ══ -->
+<section id="timeline">
+  <div class="timeline-inner">
+    <div class="timeline-line"></div>
+
+    <!-- 1: Primera cita -->
+    <div class="tl-item">
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img1" alt="REN en la arena">
+        <div class="tl-text">
+          <span class="tl-date">5 de febrero · 2025</span>
+          <div class="tl-title">La primera cita</div>
+          <div class="tl-desc">Me invitaste a comer ñoquis a tu casa. Con crema y mucha cebolla. No me gusta la cebolla. Pero me quedé igual. Y a la madrugada te desperté para pedirte un beso.</div>
+        </div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- 2: Candlelight -->
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img2" alt="Candlelight">
+        <div class="tl-text">
+          <span class="tl-date">21 de marzo · 2025</span>
+          <div class="tl-title">Candlelight</div>
+          <div class="tl-desc">Una de mis fotos favoritas. Una de esas noches que guardás para siempre.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: Colonia -->
+    <div class="tl-item">
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img3" alt="Colonia - barco">
+        <div class="tl-text">
+          <span class="tl-date">30 de marzo · 2025</span>
+          <div class="tl-title">Colonia del Sacramento</div>
+          <div class="tl-desc">Primera escapada "improvisada". Cruzamos el río y estaba feliz. Muy feliz.</div>
+        </div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-content" style="border:none;background:transparent;box-shadow:none;">
+        <img class="tl-photo" src="" data-src="img4" alt="Colonia - beso" style="border:0.5px solid var(--border);border-radius:2px;">
+      </div>
+    </div>
+
+    <!-- 4: Zafiro -->
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img5" alt="Zafiro">
+        <div class="tl-text">
+          <span class="tl-date">9 de mayo · 2025</span>
+          <div class="tl-title">Apareció la bestia Zafiro</div>
+          <div class="tl-desc">El tercero en discordia. El que manda en casa. Bienvenido, chiquitín.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5: Airbag -->
+    <div class="tl-item">
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img6" alt="Airbag recital">
+        <div class="tl-text">
+          <span class="tl-date">1 de junio · 2025</span>
+          <div class="tl-title">Airbag — primer recital juntos</div>
+          <div class="tl-desc">Nuestro primer recital. ♡</div>
+        </div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- 6: La Sirenita -->
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img7" alt="La Sirenita teatro">
+        <div class="tl-text">
+          <span class="tl-date">7 de junio · 2025</span>
+          <div class="tl-title">La Sirenita</div>
+          <div class="tl-desc">Al teatro, a ver tu cara cuando empezó el espectáculo.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7: Disney on Ice -->
+    <div class="tl-item">
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img8" alt="Disney on Ice">
+        <div class="tl-text">
+          <span class="tl-date">26 de julio · 2025</span>
+          <div class="tl-title">Disney On Ice</div>
+          <div class="tl-desc">Princesas sobre el hielo. Esa sonrisa tuya lo decía todo.</div>
+        </div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- 8: San Clemente -->
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img9" alt="San Clemente">
+        <div class="tl-text">
+          <span class="tl-date">4 de octubre · 2025</span>
+          <div class="tl-title">San Clemente</div>
+          <div class="tl-desc">Otra escapada re contra improvisada. Ya somos especialistas en eso.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9: Mudanza -->
+    <div class="tl-item">
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img10" alt="Mudanza">
+        <div class="tl-text">
+          <span class="tl-date">Diciembre · 2025</span>
+          <div class="tl-title">Nos mudamos juntos</div>
+          <div class="tl-desc">Oficialmente. Aunque prácticamente ya vivíamos juntos hace rato.</div>
+        </div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- 10: Fin de año -->
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img11" alt="Fin de año">
+        <div class="tl-text">
+          <span class="tl-date">31 de diciembre · 2025 — 1 de enero · 2026</span>
+          <div class="tl-title">Primer fin de año juntos</div>
+          <div class="tl-desc">El primero de muchos. Empezamos el 2026 de la mejor manera.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11: Miami -->
+    <div class="tl-item">
+      <div class="tl-content">
+        <img class="tl-photo" src="" data-src="img12" alt="Miami">
+        <div class="tl-text">
+          <span class="tl-date">28 feb — 7 mar · 2026</span>
+          <div class="tl-title">Miami</div>
+          <div class="tl-desc">Te compraste mucha ropa. Estabas feliz. Yo también.</div>
+        </div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- 12: Hoy — selfie -->
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-photo-placeholder" id="selfie-placeholder">
+          <div class="petal" style="width:80px;height:80px;background:var(--rose);top:-20px;left:-20px;transform:rotate(30deg)"></div>
+          <div class="petal" style="width:60px;height:60px;background:var(--rose-mid);bottom:-10px;right:-10px;transform:rotate(-20deg)"></div>
+          <div class="placeholder-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 20a7 7 0 0114 0"/><circle cx="18" cy="8" r="2"/><path d="M18 6v4M16 8h4"/></svg>
+          </div>
+          <p class="placeholder-text">Sacate una selfie para el recuerdo</p>
+          <span class="placeholder-sub">tocá para abrir la cámara</span>
+          <input type="file" accept="image/*" capture="user" class="photo-upload-input" id="selfie-input">
+        </div>
+        <div class="tl-text">
+          <span class="tl-date">7 de mayo · 2026</span>
+          <div class="tl-title">Hoy — nuestro aniversario</div>
+          <div class="tl-desc">Un año. El primero de los que vienen.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ QUIZ HEADER ══ -->
+<div class="section-header">
+  <div class="petal" style="width:100px;height:100px;background:var(--rose);top:-30px;right:-20px;transform:rotate(20deg)"></div>
+  <div class="petal" style="width:70px;height:70px;background:var(--rose-mid);bottom:-15px;left:30px;transform:rotate(-40deg)"></div>
+  <span class="section-eyebrow">capítulo dos</span>
+  <h2 class="section-title">¿Cuánto <em>nos conocemos?</em></h2>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<section id="quiz">
+  <div class="quiz-inner">
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="quiz-card">
+      <span class="quiz-counter" id="quizCounter">Pregunta 1 de 7</span>
+      <p class="quiz-question" id="quizQuestion"></p>
+      <div class="quiz-options" id="quizOptions"></div>
+      <p class="quiz-feedback" id="quizFeedback"></p>
+      <button class="quiz-next" id="quizNext">siguiente pregunta →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESULTADO ══ -->
+<section id="resultado">
+  <div class="resultado-card">
+    <div class="petal" style="width:150px;height:150px;background:var(--rose);top:-40px;left:-40px;transform:rotate(20deg)"></div>
+    <div class="petal" style="width:100px;height:100px;background:var(--rose-mid);bottom:-20px;right:-20px;transform:rotate(-30deg)"></div>
+    <div class="resultado-score" id="resultScore">7</div>
+    <span class="resultado-label">de 7 correctas</span>
+    <p class="resultado-msg" id="resultMsg"></p>
+    <button class="resultado-cta" onclick="mostrarPista()">ver mi regalo →</button>
+  </div>
+</section>
+
+<!-- ══ PISTA FINAL ══ -->
+<section id="pista">
+  <div class="pista-inner">
+
+    <div class="pista-sobre" id="pistaEl" onclick="abrirSobre()">
+      <div class="sobre-body"></div>
+      <div class="sobre-flap"></div>
+      <div class="sobre-corazon">♥</div>
+    </div>
+    <span class="pista-eyebrow">último capítulo</span>
+    <h2 class="pista-title">Hay algo esperándote</h2>
+    <p class="pista-tap" id="pistaTap">tocá el sobre para abrirlo</p>
+
+    <!-- PISTA 1 -->
+    <div class="pista-step" id="step1" style="display:none;">
+      <div class="pista-num">pista <em>01</em></div>
+      <div class="pista-riddle">
+        <div class="petal" style="width:80px;height:80px;background:var(--rose);top:-20px;left:-20px;transform:rotate(20deg)"></div>
+        <p class="pista-riddle-text">"Buscá donde guardás los restos de la comida que según vos van a durar para siempre... y según yo se van a poner feos."</p>
+      </div>
+      <div class="code-block">
+        <p class="code-question">Ingresá el código que encontraste</p>
+        <div class="code-input-row">
+          <input type="text" class="code-input" id="code1" placeholder="······" maxlength="6" inputmode="numeric">
+          <button class="code-btn" onclick="checkCode(1)">→</button>
+        </div>
+        <p class="code-error" id="err1"></p>
+      </div>
+    </div>
+
+    <!-- PISTA 2 -->
+    <div class="pista-step" id="step2" style="display:none;">
+      <div class="pista-num">pista <em>02</em></div>
+      <div class="pista-riddle">
+        <div class="petal" style="width:80px;height:80px;background:var(--rose);top:-20px;right:-20px;transform:rotate(-20deg)"></div>
+        <p class="pista-riddle-text">"Ahora buscá algo mío. Lo que quiero usar todos los días de mi vida pero la sociedad no me lo permite. Abrí el cajón donde viven mis amores de tela."</p>
+      </div>
+      <div class="code-block">
+        <p class="code-question">Ingresá el código que encontraste</p>
+        <div class="code-input-row">
+          <input type="text" class="code-input" id="code2" placeholder="······" maxlength="6" inputmode="numeric">
+          <button class="code-btn" onclick="checkCode(2)">→</button>
+        </div>
+        <p class="code-error" id="err2"></p>
+      </div>
+    </div>
+
+    <!-- PISTA 3 -->
+    <div class="pista-step" id="step3" style="display:none;">
+      <div class="pista-num">pista <em>03</em></div>
+      <div class="pista-riddle">
+        <div class="petal" style="width:80px;height:80px;background:var(--rose);bottom:-20px;left:-20px;transform:rotate(40deg)"></div>
+        <p class="pista-riddle-text">"Encontraste mis camisetas, pero el tesoro no está acá. Buscá a la princesa que canta sola, la que tiene una historia con una bestia... y con vos."</p>
+      </div>
+      <div class="code-block">
+        <p class="code-question">Ingresá el código que encontraste</p>
+        <div class="code-input-row">
+          <input type="text" class="code-input" id="code3" placeholder="··" maxlength="4" inputmode="numeric">
+          <button class="code-btn" onclick="checkCode(3)">→</button>
+        </div>
+        <p class="code-error" id="err3"></p>
+      </div>
+    </div>
+
+    <!-- PISTA 4 FINAL -->
+    <div class="pista-step" id="step4" style="display:none;">
+      <div class="pista-num">pista <em>04</em> · la última</div>
+      <div class="pista-riddle pista-final">
+        <div class="petal" style="width:100px;height:100px;background:var(--rose);top:-30px;left:-30px;transform:rotate(20deg)"></div>
+        <div class="petal" style="width:70px;height:70px;background:var(--rose-mid);bottom:-20px;right:-20px;transform:rotate(-30deg)"></div>
+        <p class="pista-riddle-text">"Ya casi estás. Buscá tu colección favorita, la que exhibís con más orgullo que cualquier museo. Y dentro de la que tiene la <em>G grande</em>... está lo que armé para vos." ♥</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="petal" style="width:120px;height:120px;background:var(--rose);top:-40px;right:-30px;transform:rotate(15deg)"></div>
+  <p class="footer-text" style="position:relative;z-index:1;">Gracias por este año, Renata.<br>El mejor que tuve.</p>
+  <span class="footer-hearts" style="position:relative;z-index:1;">♥ ♥ ♥</span>
+</footer>
+
+<script>
+// ── Cargar imágenes lazy ──
+document.querySelectorAll('.tl-photo[data-src]').forEach(img => {
+  const key = img.getAttribute('data-src');
+  if (IMAGES[key]) img.src = IMAGES[key];
+  img.removeAttribute('data-src');
+});
+
+// ── Selfie upload ──
+document.getElementById('selfie-input').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const placeholder = document.getElementById('selfie-placeholder');
+    const img = document.createElement('img');
+    img.src = ev.target.result;
+    img.className = 'tl-photo';
+    img.style.objectPosition = 'center center';
+    placeholder.replaceWith(img);
+  };
+  reader.readAsDataURL(file);
+});
+
+// ── Intersection Observer para animación timeline ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.tl-item').forEach(el => observer.observe(el));
+
+// ── QUIZ ──
+const preguntas = [
+  {
+    q: "¿Cuál fue el primer regalo que te di?",
+    opts: ["Un perfume", "Un ventilador", "Una luna lámpara"],
+    correct: 1,
+    ok: "¡Correcto! El ventilador, el héroe del verano 🌀",
+    fail: "Era el ventilador... el héroe que no sabías que necesitabas 🌀"
+  },
+  {
+    q: "¿Cuál es mi postre favorito?",
+    opts: ["Helado", "Flan con dulce y crema", "Chocolate"],
+    correct: 1,
+    ok: "¡Bien! El flan con todo, como corresponde 🍮",
+    fail: "¡Era el flan con dulce y crema! Algo más rico no hay 🍮"
+  },
+  {
+    q: "¿Cuál fue el único stand-up que fuimos a ver juntos?",
+    opts: ["Luciano Mellera", "El Trinche", "Lucas Lauriente"],
+    correct: 2,
+    ok: "¡Exacto! Lucas Lauriente 😄",
+    fail: "Era Lucas Lauriente — nos reímos mucho esa noche 😄"
+  },
+  {
+    q: "¿Quién es mejor en el backgammon?",
+    opts: ["Renata", "Julián", "Zafiro"],
+    correct: 1,
+    ok: "La verdad duele, ¿no? 😏",
+    fail: "Julián. Siempre Julián. Es así 😏"
+  },
+  {
+    q: "¿Qué comiste cuando conociste a mis papás?",
+    opts: ["Milanesa", "Tarta", "Canelones"],
+    correct: 2,
+    ok: "¡Canelones! Buen debut 🍝",
+    fail: "¡Canelones! Un clásico para una primera vez 🍝"
+  },
+  {
+    q: "¿Quién ama más al otro?",
+    opts: ["Julián a Renata", "Julián a Rena", "Julián a Renienzo"],
+    correct: 2,
+    ok: "Renienzo, la única respuesta correcta 💕",
+    fail: "¡Julián a Renienzo! Siempre 💕"
+  },
+  {
+    q: "¿Cuál fue el primer juego de Play que jugamos de a dos?",
+    opts: ["A Way Out", "It Takes Two", "Moving Out 2"],
+    correct: 1,
+    ok: "¡It Takes Two! El nombre lo dice todo 🎮",
+    fail: "It Takes Two — el nombre ya lo decía todo 🎮"
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function renderQuestion() {
+  const p = preguntas[current];
+  document.getElementById('quizCounter').textContent = `Pregunta ${current + 1} de ${preguntas.length}`;
+  document.getElementById('quizQuestion').textContent = p.q;
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('quizFeedback').className = 'quiz-feedback';
+  document.getElementById('quizNext').style.display = 'none';
+  document.getElementById('progressFill').style.width = `${(current / preguntas.length) * 100}%`;
+  answered = false;
+
+  const opts = document.getElementById('quizOptions');
+  opts.innerHTML = '';
+  const letters = ['a', 'b', 'c'];
+  p.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.innerHTML = `<span class="opt-letter">${letters[i]}</span>${opt}`;
+    btn.onclick = () => selectOption(i);
+    opts.appendChild(btn);
+  });
+}
+
+function selectOption(idx) {
+  if (answered) return;
+  answered = true;
+  const p = preguntas[current];
+  const btns = document.querySelectorAll('.quiz-opt');
+  const fb = document.getElementById('quizFeedback');
+
+  if (idx === p.correct) {
+    btns[idx].classList.add('correct');
+    fb.textContent = p.ok;
+    fb.className = 'quiz-feedback';
+    score++;
+  } else {
+    btns[idx].classList.add('wrong');
+    btns[p.correct].classList.add('correct');
+    fb.textContent = p.fail;
+    fb.className = 'quiz-feedback wrong';
+  }
+
+  btns.forEach(b => b.onclick = null);
+  document.getElementById('quizNext').style.display = 'block';
+  document.getElementById('quizNext').textContent =
+    current < preguntas.length - 1 ? 'siguiente pregunta →' : 'ver mi resultado →';
+}
+
+document.getElementById('quizNext').onclick = function() {
+  current++;
+  if (current < preguntas.length) {
+    renderQuestion();
+  } else {
+    mostrarResultado();
+  }
+};
+
+function mostrarResultado() {
+  document.getElementById('quiz').style.display = 'none';
+  const sec = document.getElementById('resultado');
+  sec.style.display = 'block';
+  document.getElementById('resultScore').textContent = `${score}/7`;
+
+  let msg;
+  if (score === 7) msg = "¡Perfecto! Me conocés de memoria, o casi. Te quiero mucho, Renienzo. 💕";
+  else if (score >= 5) msg = "Muy bien. Me conocés bastante bien. O tuviste suerte. Las dos cosas valen. 💕";
+  else if (score >= 3) msg = "Algunas las sabías, otras no tanto. Queda tiempo para aprender más. 💕";
+  else msg = "Uy... pero te quiero igual. O capaz justo por eso. 💕";
+
+  document.getElementById('resultMsg').textContent = msg;
+  sec.scrollIntoView({ behavior: 'smooth' });
+}
+
+const codigos = { 1: '050225', 2: '240325', 3: '54' };
+
+function mostrarPista() {
+  const sec = document.getElementById('pista');
+  sec.style.display = 'block';
+  sec.scrollIntoView({ behavior: 'smooth' });
+}
+
+function abrirSobre() {
+  const el = document.getElementById('pistaEl');
+  if (el.classList.contains('open')) return;
+  el.classList.add('open');
+  document.getElementById('pistaTap').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step1').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 700);
+}
+
+function checkCode(num) {
+  const input = document.getElementById('code' + num);
+  const err = document.getElementById('err' + num);
+  const val = input.value.trim().replace(/\//g, '');
+  if (val === codigos[num]) {
+    err.textContent = '';
+    input.disabled = true;
+    document.querySelector('#step' + num + ' .code-btn').disabled = true;
+    const next = document.getElementById('step' + (num + 1));
+    setTimeout(() => {
+      next.style.display = 'block';
+      next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 400);
+  } else {
+    err.textContent = '✗ No es esa... pensá un poco más 💭';
+    input.value = '';
+    input.focus();
+  }
+}
+
+// Iniciar quiz
+renderQuestion();
+</script>
+</body>
+</html>
